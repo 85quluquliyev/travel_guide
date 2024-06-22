@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}User Profile{% endblock %}
+
+{% block content %}
+    <div class="container mt-4">
+        <h1>{{ user.username }} - Profile</h1>
+        <p>Username: {{ profile.user.username }}</p>
+        <p>Email: {{ profile.user.email }}</p>
+        <p>Bio: {{ profile.bio }}</p>
+        {% if tour_guide %}
+            <h2>Tour Guide Information</h2>
+            <p>Languages: {{ tour_guide.languages }}</p>
+            <p>Experience: {{ tour_guide.experience }} year</p>
+        {% endif %}
+        <h3>Reservations</h3>
+        <ul>
+            {% for booking in guide_bookings %}
+            <li>
+                {{ booking.traveler.username }} has booked you on {{ booking.date }}.
+            </li>
+            {% endfor %}
+        </ul>
+        <a href="{% url 'profile' %}" class="btn btn-secondary mt-3">Turn back</a>
+    </div>  
+{% endblock %}

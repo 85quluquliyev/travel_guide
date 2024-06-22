@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Book Tour Guide{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>{{ tour_guide.profile.user.username }} - Book Your Guide</h2>
+    <form method="POST" class="mt-3">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="date">Date:</label>
+            <input type="datetime-local" id="date" name="date" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Book</button>
+    </form>
+</div>
+{% endblock %}
